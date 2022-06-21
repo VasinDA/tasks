@@ -16,4 +16,3 @@ class Convertor:
         if units == 0:
             return self.tens_dict[tens]
         return '{}{}'.format(self.tens_dict[tens], self.units_dict[units])
-
