@@ -1,4 +1,3 @@
-from setuptools import setup
 import unittest
 from arabic_to_roman_convertor import Convertor
 
