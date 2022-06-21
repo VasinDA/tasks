@@ -1,10 +1,6 @@
-from mimetypes import init
 import re
 
 class HtmlParser:
-    def __init__(self):
-         pass
-
     def getTextFromFile(self, filename):
         list = self.readFromFile(filename)
         for i in list:
