@@ -1,5 +1,5 @@
 import unittest
-from html_parcer import HtmlParser
+from html_parser import HtmlParser
 
 class TestHtmlParser(unittest.TestCase):
     def test_get_text_from_html(self):
