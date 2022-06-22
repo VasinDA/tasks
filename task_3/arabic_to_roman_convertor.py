@@ -6,7 +6,7 @@ class Convertor:
 
     def convertArabicToRomans(self, num):
         if not isinstance(num, int):
-            raise 'Not digit'
+            return 'Not digit'
         if num == 0:
             return ''
         units = num % 10
