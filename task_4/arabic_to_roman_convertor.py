@@ -1,5 +1,3 @@
-import re
-
 class Convertor:
     def __init__(self):
        self.dict = {1: 'I', 5: 'V', 10: 'X', 50: 'L', 100: 'C', 
