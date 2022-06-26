@@ -27,7 +27,4 @@ class Convertor:
                rom_digit = self.dict[flag] + self.dict[flag * 10] + rom_digit
             flag *= 10
         return rom_digit
-
-n = Convertor()
-print(n.convertArabicToRomans(40))
         
