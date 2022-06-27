@@ -4,7 +4,7 @@ from city_game import CityGame
 class TestCityGame(unittest.TestCase):
     def test_get_city_by_letter(self):
         wrong_filename = ''
-        filename = 'cities_list_test.txt'
+        filename = 'test_file//cities_list_test.txt'
         digit = 123
         word = 'Киев'
         test_letter = 'А'
