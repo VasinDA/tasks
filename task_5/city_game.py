@@ -1,6 +1,5 @@
 from codecs import utf_8_encode
 
-
 class CityGame:
     def __init__(self, file_name) :
         self.alfabet_str = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЭЮЯ'
@@ -13,7 +12,7 @@ class CityGame:
             raise IOError("Reading file error")
 
     def getCityByLetter(self, letter):
-        if not letter.isalpha() and len(letter) > 1:
+        if not isinstance(letter, str) or len(letter) > 1:
             return 'Not letter'
         letter = letter.upper()
         if letter not in self.cities_dict:
@@ -23,7 +22,7 @@ class CityGame:
                 if len(self.cities_dict[key]) == 0:
                     return 'Ran out of cities starting with this letter'
                 answer_dict = {}
-                for i in range(len(self.cities_dict[key]) - 1):
+                for i in range(len(self.cities_dict[key])):
                     city = self.cities_dict[key][i]
                     last_letter = city[len(city) - 1].upper()
                     if last_letter in self.cities_dict:
@@ -34,10 +33,6 @@ class CityGame:
         del new_cities_list[answer_dict[min(answer_dict)]]
         self.cities_dict[letter] = new_cities_list
         return answer
-        
-
-a = CityGame('cities_list.txt')
-print(a.getCityByLetter('Я'))
 
                     
 
