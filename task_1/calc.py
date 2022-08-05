@@ -13,7 +13,7 @@ class CalculatorAPP(ttk.Frame):
         self.digit2_ent = ttk.Entry(width=10)
         self.equal_lbl = tk.Label(text = '=')
         self.result_lbl = tk.Label()
-        self.add_btn = ttk.Button(text = '+', width=10)
+        self.add_btn = ttk.Button(text = '+', width=10, command = self.getResault('+'))
         self.sbt_btn = ttk.Button(text = '-', width=10)
         self.multi_btn = ttk.Button(text = '*', width=10)
         self.sub_btn = ttk.Button(text = '/', width=10)
@@ -26,18 +26,13 @@ class CalculatorAPP(ttk.Frame):
         self.sbt_btn.grid(row=1, column=1)
         self.multi_btn.grid(row=1, column=2)
         self.sub_btn.grid(row=1, column=3)
-
-        self.digit1_ent.insert(0, '0')
-        self.digit2_ent.insert(0, '0')
-
-        self.add_btn.bind('<ButtonRelease>', self.getResault('+'))
     
     def getResault(self, operarion):
-        num1 = self.digit1_ent.get()
-        num2 = self.digit2_ent.get()
+        num1 = self.digit1_ent
+        num2 = self.digit2_ent
         match operarion:
             case '+':
-                resault = float(num1) + float(num2)
+                resault = num1 + num2
         self.result_lbl['text'] = resault
 
 
