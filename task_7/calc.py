@@ -1,47 +1,49 @@
-import tkinter as tk
-import tkinter.ttk as ttk
+import tkinter
+import tkinter.ttk
 
-class CalculatorAPP(ttk.Frame):
+class CalculatorAPP(tkinter.ttk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
-        self.master.title = ('Calculator')
+        self.master.title('Calculator')
         self.master.resizable(False, False)
+        self.expression = ''
         self.create_widgets()
-    
+                 
     def create_widgets(self):
-        self.digit1_ent = ttk.Entry(width=10)
-        self.digit2_ent = ttk.Entry(width=10)
-        self.equal_lbl = tk.Label(text = '=')
-        self.result_lbl = tk.Label()
-        self.add_btn = ttk.Button(text = '+', width=10, command=self.getResault('+'))
-        self.sbt_btn = ttk.Button(text = '-', width=10)
-        self.multi_btn = ttk.Button(text = '*', width=10)
-        self.sub_btn = ttk.Button(text = '/', width=10)
+        self.digit1_ent = tkinter.ttk.Entry(width=10)
+        self.digit2_ent = tkinter.ttk.Entry(width=10)
+        self.equal_lbl = tkinter.ttk.Label(text = '=')
+        self.result_lbl = tkinter.ttk.Label()
+        self.add_btn = tkinter.ttk.Button(text = '+', command=lambda: self.getResault('+'), width=10)
+        self.sbt_btn = tkinter.ttk.Button(text = '-', command=lambda: self.getResault('-'), width=10)
+        self.multi_btn = tkinter.ttk.Button(text = '*', command=lambda: self.getResault('*'), width=10)
+        self.sub_btn = tkinter.ttk.Button(text = '/', command=lambda: self.getResault('/'), width=10)
+        self.clear_btn = tkinter.ttk.Button(text='Clear', command=self.clearCalc, width=10)
 
-        self.digit1_ent.grid(row=0, column=0)
-        self.digit2_ent.grid(row=0, column=1)
-        self.equal_lbl.grid(row=0, column=2)
-        self.result_lbl.grid(row=0, column=3)
-        self.add_btn.grid(row=1, column=0)
-        self.sbt_btn.grid(row=1, column=1)
-        self.multi_btn.grid(row=1, column=2)
-        self.sub_btn.grid(row=1, column=3)
+        self.digit1_ent.grid(row=0, column=0, padx=5, pady=5)
+        self.digit2_ent.grid(row=0, column=1, padx=5, pady=5)
+        self.equal_lbl.grid(row=0, column=2, padx=5, pady=5)
+        self.result_lbl.grid(row=0, column=3, padx=5, pady=5)
+        self.add_btn.grid(row=1, column=0, padx=5, pady=5)
+        self.sbt_btn.grid(row=1, column=1, padx=5, pady=5)
+        self.multi_btn.grid(row=1, column=2, padx=5, pady=5)
+        self.sub_btn.grid(row=1, column=3, padx=5, pady=5)
+        self.clear_btn.grid(row=2, column=0, padx=5, pady=5)
 
-        
+    def getResault(self, operation):
+        self.expression = self.digit1_ent.get() + operation + self.digit2_ent.get()
+        try:
+            resault = round(eval(self.expression), 4)
+            self.result_lbl['text'] = resault
+            self.expression = ''
+        except:
+            self.result_lbl['text'] = 'Error'
 
-        
-    
-    def getResault(self, operarion):
-        num1 = self.digit1_ent.get()
-        num2 = self.digit2_ent.get()
-        match operarion:
-            case '+':
-                resault = float(num1) + float(num2)
-        self.result_lbl['text'] = resault
+    def clearCalc(self):
+        self.digit1_ent.delete(0, tkinter.END)
+        self.digit2_ent.delete(0, tkinter.END)
+        self.result_lbl['text'] = self.expression
 
-
-    
-
-root = tk.Tk()
+root = tkinter.Tk()
 app = CalculatorAPP(master=root)
 root.mainloop()
