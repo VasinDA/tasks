@@ -13,7 +13,7 @@ class CalculatorAPP(ttk.Frame):
         self.digit2_ent = ttk.Entry(width=10)
         self.equal_lbl = tk.Label(text = '=')
         self.result_lbl = tk.Label()
-        self.add_btn = ttk.Button(text = '+', width=10)
+        self.add_btn = ttk.Button(text = '+', width=10, command=self.getResault('+'))
         self.sbt_btn = ttk.Button(text = '-', width=10)
         self.multi_btn = ttk.Button(text = '*', width=10)
         self.sub_btn = ttk.Button(text = '/', width=10)
@@ -27,10 +27,9 @@ class CalculatorAPP(ttk.Frame):
         self.multi_btn.grid(row=1, column=2)
         self.sub_btn.grid(row=1, column=3)
 
-        self.digit1_ent.insert(0, '0')
-        self.digit2_ent.insert(0, '0')
+        
 
-        self.add_btn.bind('<ButtonRelease>', self.getResault('+'))
+        
     
     def getResault(self, operarion):
         num1 = self.digit1_ent.get()
