@@ -1,5 +1,6 @@
 import tkinter
 import tkinter.ttk
+import tkinter.messagebox
 
 class CalculatorAPP(tkinter.ttk.Frame):
     def __init__(self, master=None):
@@ -35,9 +36,12 @@ class CalculatorAPP(tkinter.ttk.Frame):
         try:
             resault = round(eval(self.expression), 4)
             self.result_lbl['text'] = resault
+            tkinter.messagebox.showinfo('Answer', f'{resault}')
             self.expression = ''
         except:
             self.result_lbl['text'] = 'Error'
+            tkinter.messagebox.showinfo('Answer', 'Error')
+            self.expression = ''
 
     def clearCalc(self):
         self.digit1_ent.delete(0, tkinter.END)
