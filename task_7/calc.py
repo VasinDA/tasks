@@ -8,6 +8,8 @@ class CalculatorAPP(tkinter.ttk.Frame):
         self.master.title('Calculator')
         self.master.resizable(False, False)
         self.expression = ''
+        self.style = tkinter.ttk.Style(master)
+        self.style.theme_use('clam')
         self.create_widgets()
                  
     def create_widgets(self):
