@@ -8,7 +8,7 @@ class TestRoomAvailable(unittest.TestCase):
         test_room_available = RoomAvailable()
         for key in test_dict:
             for slot in test_dict[key]:
-                if isinstance(slot, int):
+                if not isinstance(slot, tuple):
                     self.assertEqual(test_room_available.isRoomAvailable(slot), test_dict[key][slot])
                 else:
                     timeslot, duration = slot
@@ -20,7 +20,7 @@ class TestRoomAvailable(unittest.TestCase):
         test_room_available = RoomAvailable()
         for key in test_dict:
             for slot in test_dict[key]:
-                if isinstance(slot, int):
+                if not isinstance(slot, tuple):
                     self.assertEqual(test_room_available.isRoomAvailable(slot), test_dict[key][slot])
                 else:
                     timeslot, duration = slot
@@ -32,7 +32,7 @@ class TestRoomAvailable(unittest.TestCase):
         test_room_available = RoomAvailable()
         for key in test_dict:
             for slot in test_dict[key]:
-                if isinstance(slot, int):
+                if not isinstance(slot, tuple):
                     self.assertEqual(test_room_available.isRoomAvailable(slot), test_dict[key][slot])
                 else:
                     timeslot, duration = slot
