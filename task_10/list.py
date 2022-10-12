@@ -1,3 +1,6 @@
+from operator import index
+
+
 class Mylist:
     def __init__ (self, *data):
         self.tuple = data
@@ -27,9 +30,18 @@ class Mylist:
     
     def find(self, data):
         index = 0
-        index_list = [index for _ in self.tuple index += 1]
-        return index_list 
+        for i in self.tuple:
+            if i == data:
+                return index
+            index += 1
+        index = -1
+        return index
+    
+    def remove(self, data):
+        len = 0
+        for _ in self.tuple:
+            len += 1
+        list = [self.tuple[i] for i in range(len) if i != data]
+        newList = Mylist(*list,)
+        return newList
 
-
-myList = Mylist(1,2,3,4)
-print(myList.find(2))
