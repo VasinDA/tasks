@@ -1,6 +1,6 @@
 from cgi import test
 import unittest
-from list import Mylist
+from mylist import Mylist
 
 class TestMylist(unittest.TestCase):
     def setUp(self):
@@ -26,14 +26,22 @@ class TestMylist(unittest.TestCase):
     def test_remove(self):
         expected_result = True
         test_mylist = Mylist(1,2,4)
-        self.assertEqual(self.__eq__(test_mylist), expected_result)
-    
-    def __eq__(self, other):
         test_data = 1
         self.mylist = self.mylist.remove(test_data)
-        if isinstance(other, Mylist):
-            return self.mylist.tuple == other.tuple
-        return NotImplemented
+        self.assertEqual(self.mylist.__eq__(test_mylist), expected_result)
+    
+    def test_replace_includes(self):
+        test_old_value = 2
+        test_new_value = 8
+        test_hit_counter = 1
+        test_includes_value = 8
+        test_includes_value_wrong = 10
+        expected_result_includes = True
+        expected_result_includes_wrong = False
+        self.assertEqual(self.mylist.replace(test_old_value, test_new_value), test_hit_counter)
+        self.assertEqual(self.mylist.includes(test_includes_value), expected_result_includes)
+        self.assertEqual(self.mylist.includes(test_includes_value_wrong), expected_result_includes_wrong)
+
 
 
 unittest.main()
