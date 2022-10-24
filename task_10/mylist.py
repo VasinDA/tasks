@@ -30,8 +30,6 @@ class Mylist:
         return avg
     
     def find(self, value):
-        if self.lenList() == 0:
-            return -1
         index = 0
         for i in self.list:
             if i == value:
