@@ -5,6 +5,8 @@ from mylist import Mylist
 class TestMylist(unittest.TestCase):
     def setUp(self):
         self.mylist = Mylist(1,3,2,4)
+        self.sorted_mylist = Mylist(1,2,4)
+        self.unsorted_mylist = Mylist(1,4,2)
     
     def test_min(self):
         expected_result = 1
@@ -33,15 +35,29 @@ class TestMylist(unittest.TestCase):
     def test_replace_includes(self):
         test_old_value = 2
         test_new_value = 8
-        test_hit_counter = 1
+        test_hint_counter = 1
         test_includes_value = 8
         test_includes_value_wrong = 10
         expected_result_includes = True
         expected_result_includes_wrong = False
-        self.assertEqual(self.mylist.replace(test_old_value, test_new_value), test_hit_counter)
+        self.assertEqual(self.mylist.replace(test_old_value, test_new_value), test_hint_counter)
         self.assertEqual(self.mylist.includes(test_includes_value), expected_result_includes)
         self.assertEqual(self.mylist.includes(test_includes_value_wrong), expected_result_includes_wrong)
-
+    
+    def test_is_sorted(self):
+        expected_result_for_sorted_mylist = True
+        expected_result_for_unsorted_mylist = False
+        self.assertEqual(self.sorted_mylist.isSorted(), expected_result_for_sorted_mylist)
+        self.assertEqual(self.unsorted_mylist.isSorted(), expected_result_for_unsorted_mylist)
+    
+    def test_sort_direction(self):
+        self.sorted_down_mylist = Mylist(4,2,1)
+        expected_result_for_sorted_up_mylist = 1
+        expected_result_for_sorted_down_mylist = -1
+        expected_result_for_unsorted_mylist = 0
+        self.assertEqual(self.sorted_mylist.sortDirection(),  expected_result_for_sorted_up_mylist)
+        self.assertEqual(self.sorted_down_mylist.sortDirection(),  expected_result_for_sorted_down_mylist)
+        self.assertEqual(self.unsorted_mylist.sortDirection(), expected_result_for_unsorted_mylist)
 
 
 unittest.main()
