@@ -90,6 +90,26 @@ class Mylist:
         if self.sortDirection() == 1 or self.sortDirection() == -1:
             return True
         return False
+    
+    def count(self, value=None):
+        if value == None:
+            return self.lenList()
+        return self.hintCounter(value)
+
+    def append(self, value):
+        self.list = self.list + [value]
+        return self.list
+    
+    def index(self, index, value):
+        if index < 0:
+            return -1
+        elif index >= self.lenList():
+            return self.append(value)
+        list = self.list[index:self.lenList()]
+        
+        
+        
+        
  
     def hintCounter(self, value):
         counter = 0
@@ -108,3 +128,7 @@ class Mylist:
         if isinstance(other, Mylist):
             return self.list == other.list
         return NotImplemented
+
+data = Mylist(1,2,3)
+print(data.append(4))
+print(data.count(4))
