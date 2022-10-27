@@ -87,9 +87,7 @@ class Mylist:
         return 0
 
     def isSorted(self):
-        if self.sortDirection() == 1 or self.sortDirection() == -1:
-            return True
-        return False
+       return self.sortDirection() == 1 or self.sortDirection() == -1
     
     def count(self, value=None):
         if value == None:
@@ -97,6 +95,9 @@ class Mylist:
         return self.hintCounter(value)
 
     def append(self, value):
+        if isinstance(value, list):
+            self.list = self.list + value
+            return self.list
         self.list = self.list + [value]
         return self.list
     
@@ -105,12 +106,37 @@ class Mylist:
             return -1
         elif index >= self.lenList():
             return self.append(value)
-        list = self.list[index:self.lenList()]
+        right_side_list = self.list[index:self.lenList()]
+        self.list[index] = value
+        self.list = self.list[:index+1]
+        self.list = self.append(right_side_list)
+        return self.list
+    
+    def concat(self, newList):
+        new_list = newList.list
+        self.list = self.append(new_list)
+        return self.list
+    
+    def clear(self):
+        self.list = []
+        return self.list
+    
+    def sort(self, direction):
         
-        
-        
-        
- 
+        if direction == self.sortDirection():
+            return self.list
+        elif (direction == 1 and self.sortDirection() == -1) or (direction == -1 and self.sortDirection() == 1):
+            self.list = self.list[::-1]
+            return self.list
+        swapped = True
+        while swapped:
+            swapped = False
+            for i in range(self.lenList() - 1):
+                if self.list[i] > self.list[i + 1]:
+                   self.list[i], self.list[i + 1] = self.list[i + 1], self.list[i]
+                   swapped = True
+        return self.sort(direction)
+
     def hintCounter(self, value):
         counter = 0
         for i in self.list:
@@ -129,6 +155,5 @@ class Mylist:
             return self.list == other.list
         return NotImplemented
 
-data = Mylist(1,2,3)
-print(data.append(4))
-print(data.count(4))
+data = Mylist(1,2,5,3)
+print(data.sort(-1))
