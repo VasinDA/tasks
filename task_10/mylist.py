@@ -4,7 +4,7 @@ class Mylist:
                 
     def min(self):
         if self.lenList() == 0:
-            return -1
+            return None
         data = self.list[0]
         for i in self.list:
             if i < data:
@@ -13,7 +13,7 @@ class Mylist:
     
     def max(self):
         if self.lenList() == 0:
-            return -1
+            return None
         data = self.list[0]
         for i in self.list:
             if i > data:
@@ -22,7 +22,7 @@ class Mylist:
 
     def avg(self):
         if self.lenList() == 0:
-            return -1
+            return None
         data = 0
         for i in self.list:
             data += i
@@ -40,7 +40,7 @@ class Mylist:
     
     def remove(self, index):
         if self.lenList() == 0:
-            return -1
+            return None
         list = [self.list[i] for i in range(self.lenList()) if i != index] 
         newList = Mylist(*list,)
         return newList
@@ -57,15 +57,15 @@ class Mylist:
         return hint_counter
     
     def includes(self, value):
-        if self.lenList() == 0:
-            return -1
         hint_counter = self.hintCounter(value)
         if hint_counter == 0:
             return False
         return hint_counter
 
     def sortDirection(self):
-        if self.lenList == 1:
+        if self.lenList() == 0:
+            return None
+        elif self.lenList() == 1:
             return 1
         flag = True
         value = self.list[0]
@@ -122,20 +122,23 @@ class Mylist:
         return self.list
     
     def sort(self, direction):
-        
-        if direction == self.sortDirection():
-            return self.list
-        elif (direction == 1 and self.sortDirection() == -1) or (direction == -1 and self.sortDirection() == 1):
-            self.list = self.list[::-1]
-            return self.list
-        swapped = True
-        while swapped:
-            swapped = False
-            for i in range(self.lenList() - 1):
-                if self.list[i] > self.list[i + 1]:
-                   self.list[i], self.list[i + 1] = self.list[i + 1], self.list[i]
-                   swapped = True
-        return self.sort(direction)
+        if self.sortDirection() == None:
+            return self.sortDirection()
+        if  direction == 1 or direction == -1:
+            if direction == self.sortDirection():
+                return self.list
+            elif (direction == 1 and self.sortDirection() == -1) or (direction == -1 and self.sortDirection() == 1):
+                self.list = self.list[::-1]
+                return self.list
+            swapped = True
+            while swapped:
+                swapped = False
+                for i in range(self.lenList() - 1):
+                    if self.list[i] > self.list[i + 1]:
+                        self.list[i], self.list[i + 1] = self.list[i + 1], self.list[i]
+                        swapped = True
+            return self.sort(direction)
+        return self.list
 
     def hintCounter(self, value):
         counter = 0
@@ -155,5 +158,6 @@ class Mylist:
             return self.list == other.list
         return NotImplemented
 
-data = Mylist(1,2,5,3)
-print(data.sort(-1))
+data = Mylist()
+print(data.index(0,1))
+
