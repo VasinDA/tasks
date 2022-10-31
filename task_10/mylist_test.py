@@ -73,7 +73,31 @@ class TestMylist(unittest.TestCase):
     
     def test_index(self):
         test_index_value = 2
-        test_value = 7
+        old_value = 2
+        new_value = 7
+        self.assertEqual(self.mylist.find(old_value), test_index_value)
+        test_list = self.mylist.index(test_index_value, new_value)
+        self.assertEqual(test_list[test_index_value], new_value)
+    
+    def test_concat(self):
+        test_mylist = Mylist(1,2,3)
+        concat_list = Mylist(3,2,1)
+        expected_result = [1,2,3,3,2,1]
+        self.assertEqual(test_mylist.concat(concat_list), expected_result)
+    
+    def test_clear(self):
+        test_len = 0
+        expected_result = []
+        self.assertNotEqual(self.mylist.lenList(), test_len)
+        self.assertEqual(self.mylist.clear(), expected_result)
+    
+    def test_sort(self):
+        direction_up = 1
+        direction_down = -1
+        expected_result_up = [1,2,4]
+        expected_result_down = [4,2,1]
+        self.assertEqual(self.unsorted_mylist.sort(direction_up), expected_result_up)
+        self.assertEqual(self.unsorted_mylist.sort(direction_down), expected_result_down)
 
     def test_empty_list(self):
         empty_mylist = Mylist()
