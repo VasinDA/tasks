@@ -4,6 +4,5 @@ def notDuplicate(list):
         if i not in dict:
             dict[i] = 0
         dict[i] +=1
-    print(dict)
     list = [key for key in dict if dict[key] == 1]
     return list
