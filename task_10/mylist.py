@@ -131,7 +131,11 @@ class Mylist:
     
     def sort(self, direction):
         if self.sortDirection() == None:
+            # TODO: return... what?
             return self.sortDirection()
+        # TODO: check for direction == 0 1st?
+        # TODO: then check for isSorted and possible revert
+        # TODO: do sorting
         if  direction == 1 or direction == -1:
             if direction == self.sortDirection():
                 return self.list
