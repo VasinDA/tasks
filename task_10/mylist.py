@@ -32,15 +32,13 @@ class Mylist:
     def find(self, value):
         # TODO: may we initiate `index` with -1 and then return after for loop nothing found/
         # TODO: what if list is empty?
-        index = 0
-        
-        for i in self.list:
-            if i == value:
-                return index
+        if self.lenList() == 0:
+            return -1
+        for i in range(self.lenList()):
+            if self.list[i] == value:
+                return i
             # TODO: may we use another for loop with I-index instead?
-            index += 1
-        index = -1
-        return index
+        return -1
     
     def remove(self, index):
         if self.lenList() == 0:
@@ -62,10 +60,7 @@ class Mylist:
     
     def includes(self, value):
         # TODO: just 1 return instead of all lines?
-        hint_counter = self.hintCounter(value)
-        if hint_counter == 0:
-            return False
-        return hint_counter
+        return self.hintCounter(value) > 0
 
     def sortDirection(self):
         if self.lenList() == 0:
@@ -93,7 +88,9 @@ class Mylist:
 
     def isSorted(self):
        # TODO: may we have just 1 check instead?
-       return self.sortDirection() == 1 or self.sortDirection() == -1
+        if self.sortDirection() == None:
+            return None  
+        return self.sortDirection() != 0
     
     def count(self, value=None):
         if value == None:
@@ -109,9 +106,9 @@ class Mylist:
         return self.list
     
     # TODO: insert?
-    def index(self, index, value):
+    def insert(self, index, value):
         if index < 0:
-            return -1 # TODO: None?
+            return None # TODO: None?
         elif index >= self.lenList():
             return self.append(value)
         right_side_list = self.list[index:self.lenList()]
@@ -132,7 +129,7 @@ class Mylist:
     def sort(self, direction):
         if self.sortDirection() == None:
             # TODO: return... what?
-            return self.sortDirection()
+            return None
         # TODO: check for direction == 0 1st?
         # TODO: then check for isSorted and possible revert
         # TODO: do sorting
@@ -170,6 +167,5 @@ class Mylist:
             return self.list == other.list
         return NotImplemented
 
-data = Mylist()
-print(data.index(0,1))
+
 
