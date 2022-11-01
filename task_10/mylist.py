@@ -30,10 +30,14 @@ class Mylist:
         return avg
     
     def find(self, value):
+        # TODO: may we initiate `index` with -1 and then return after for loop nothing found/
+        # TODO: what if list is empty?
         index = 0
+        
         for i in self.list:
             if i == value:
                 return index
+            # TODO: may we use another for loop with I-index instead?
             index += 1
         index = -1
         return index
@@ -57,6 +61,7 @@ class Mylist:
         return hint_counter
     
     def includes(self, value):
+        # TODO: just 1 return instead of all lines?
         hint_counter = self.hintCounter(value)
         if hint_counter == 0:
             return False
@@ -87,6 +92,7 @@ class Mylist:
         return 0
 
     def isSorted(self):
+       # TODO: may we have just 1 check instead?
        return self.sortDirection() == 1 or self.sortDirection() == -1
     
     def count(self, value=None):
@@ -96,14 +102,16 @@ class Mylist:
 
     def append(self, value):
         if isinstance(value, list):
+            # TODO: what if that list is empty?
             self.list = self.list + value
             return self.list
         self.list = self.list + [value]
         return self.list
     
+    # TODO: insert?
     def index(self, index, value):
         if index < 0:
-            return -1
+            return -1 # TODO: None?
         elif index >= self.lenList():
             return self.append(value)
         right_side_list = self.list[index:self.lenList()]
