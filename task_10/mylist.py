@@ -1,12 +1,12 @@
 class Mylist:
     def __init__ (self, *data):
-        self.list = [*data]
+        self.mylist = [*data]
                 
     def min(self):
         if self.lenList() == 0:
             return None
-        data = self.list[0]
-        for i in self.list:
+        data = self.mylist[0]
+        for i in self.mylist:
             if i < data:
                 data = i
         return data
@@ -14,8 +14,8 @@ class Mylist:
     def max(self):
         if self.lenList() == 0:
             return None
-        data = self.list[0]
-        for i in self.list:
+        data = self.mylist[0]
+        for i in self.mylist:
             if i > data:
                 data = i
         return data 
@@ -24,7 +24,7 @@ class Mylist:
         if self.lenList() == 0:
             return None
         data = 0
-        for i in self.list:
+        for i in self.mylist:
             data += i
         avg = data / self.lenList()
         return avg
@@ -35,7 +35,7 @@ class Mylist:
         if self.lenList() == 0:
             return -1
         for i in range(self.lenList()):
-            if self.list[i] == value:
+            if self.mylist[i] == value:
                 return i
             # TODO: may we use another for loop with I-index instead?
         return -1
@@ -43,8 +43,8 @@ class Mylist:
     def remove(self, index):
         if self.lenList() == 0:
             return None
-        list = [self.list[i] for i in range(self.lenList()) if i != index] 
-        newList = Mylist(*list,)
+        remove_list = [self.mylist[i] for i in range(self.lenList()) if i != index] 
+        newList = Mylist(*remove_list,)
         return newList
 
     def replace(self, old_value, new_value):
@@ -54,8 +54,8 @@ class Mylist:
         if hint_counter == 0:
             return hint_counter
         for i in range(self.lenList()):
-            if self.list[i] == old_value:
-                self.list[i] = new_value
+            if self.mylist[i] == old_value:
+                self.mylist[i] = new_value
         return hint_counter
     
     def includes(self, value):
@@ -68,20 +68,20 @@ class Mylist:
         elif self.lenList() == 1:
             return 1
         flag = True
-        value = self.list[0]
+        value = self.mylist[0]
         for i in range(1, self.lenList()):
-            if value > self.list[i]:
+            if value > self.mylist[i]:
                 flag = False
-                value = self.list[0]
+                value = self.mylist[0]
                 break
-            value = self.list[i]
+            value = self.mylist[i]
         if flag == True:
             return 1
         for i in range(1, self.lenList()):
-            if value < self.list[i]:
+            if value < self.mylist[i]:
                 flag = True
                 break
-            value = self.list[i]
+            value = self.mylist[i]
         if flag == False:
             return -1
         return 0
@@ -100,10 +100,10 @@ class Mylist:
     def append(self, value):
         if isinstance(value, list):
             # TODO: what if that list is empty?
-            self.list = self.list + value
-            return self.list
-        self.list = self.list + [value]
-        return self.list
+            self.mylist = self.mylist + value
+            return self.mylist
+        self.mylist = self.mylist + [value]
+        return self.mylist
     
     # TODO: insert?
     def insert(self, index, value):
@@ -111,20 +111,20 @@ class Mylist:
             return None # TODO: None?
         elif index >= self.lenList():
             return self.append(value)
-        right_side_list = self.list[index:self.lenList()]
-        self.list[index] = value
-        self.list = self.list[:index+1]
-        self.list = self.append(right_side_list)
-        return self.list
+        right_side_list = self.mylist[index:self.lenList()]
+        self.mylist[index] = value
+        self.mylist = self.mylist[:index+1]
+        self.mylist = self.append(right_side_list)
+        return self.mylist
     
     def concat(self, newList):
-        new_list = newList.list
-        self.list = self.append(new_list)
-        return self.list
+        new_list = newList.mylist
+        self.mylist = self.append(new_list)
+        return self.mylist
     
     def clear(self):
-        self.list = []
-        return self.list
+        self.mylist = []
+        return self.mylist
     
     def sort(self, direction):
         if self.sortDirection() == None:
@@ -133,39 +133,41 @@ class Mylist:
         # TODO: check for direction == 0 1st?
         # TODO: then check for isSorted and possible revert
         # TODO: do sorting
-        if  direction == 1 or direction == -1:
-            if direction == self.sortDirection():
-                return self.list
-            elif (direction == 1 and self.sortDirection() == -1) or (direction == -1 and self.sortDirection() == 1):
-                self.list = self.list[::-1]
-                return self.list
+        if self.sortDirection() == 0:
             swapped = True
             while swapped:
                 swapped = False
                 for i in range(self.lenList() - 1):
-                    if self.list[i] > self.list[i + 1]:
-                        self.list[i], self.list[i + 1] = self.list[i + 1], self.list[i]
+                    if self.mylist[i] > self.mylist[i + 1]:
+                        self.mylist[i], self.mylist[i + 1] = self.mylist[i + 1], self.mylist[i]
                         swapped = True
             return self.sort(direction)
-        return self.list
+        if direction == self.sortDirection():
+                return self.mylist
+        if (direction == 1 and self.sortDirection() == -1) or (direction == -1 and self.sortDirection() == 1):
+                self.mylist = self.mylist[::-1]
+                return self.mylist
+           
+        return self.mylist
 
     def hintCounter(self, value):
         counter = 0
-        for i in self.list:
+        for i in self.mylist:
             if i == value:
                 counter += 1
         return counter
 
     def lenList(self):
         len = 0
-        for _ in self.list:
+        for _ in self.mylist:
             len += 1
         return len
 
     def __eq__(self, other):
         if isinstance(other, Mylist):
-            return self.list == other.list
+            return self.mylist == other.mylist
         return NotImplemented
 
-
+list1 = Mylist()
+print(list1.sort(-1))
 
