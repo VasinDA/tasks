@@ -84,9 +84,7 @@ class Mylist:
 
     def isSorted(self):
        # TODO: may we have just 1 check instead?
-        if self.sortDirection() == None:
-            return None  
-        return self.sortDirection() != 0
+        return self.sortDirection() == abs(1)
     
     def count(self, value=None):
         if value == None:
@@ -95,7 +93,8 @@ class Mylist:
 
     def append(self, value):
         if isinstance(value, list):
-            # TODO: what if passed list is empty?
+            if not value:
+                return self.mylist
             self.mylist = self.mylist + value
             return self.mylist
         self.mylist = self.mylist + [value]
@@ -105,7 +104,7 @@ class Mylist:
         if index < 0:
             return None
         # TODO: just `if`
-        elif index >= self.lenList():
+        if index >= self.lenList():
             return self.append(value)
         right_side_list = self.mylist[index:self.lenList()]
         self.mylist[index] = value
@@ -124,12 +123,18 @@ class Mylist:
     
     def sort(self, direction):
         # TODO: can we cache the self.sortDirection()?
-        if self.sortDirection() == None:
+        sort_direction = self.sortDirection()
+        if sort_direction == None or direction == 0:
             # TODO: return... what, origianl list?
-            return None
+            return self.mylist
         # TODO: then check for isSorted and possible revert
         # TODO: do sorting
-        if self.sortDirection() == 0:
+        if direction == sort_direction:
+                return self.mylist
+        if self.isSorted() == True and direction != sort_direction:
+                self.mylist = self.mylist[::-1]
+                return self.mylist
+        if sort_direction == 0:
             swapped = True
             while swapped:
                 swapped = False
@@ -138,12 +143,6 @@ class Mylist:
                         self.mylist[i], self.mylist[i + 1] = self.mylist[i + 1], self.mylist[i]
                         swapped = True
             return self.sort(direction)
-        if direction == self.sortDirection():
-                return self.mylist
-        if (direction == 1 and self.sortDirection() == -1) or (direction == -1 and self.sortDirection() == 1):
-                self.mylist = self.mylist[::-1]
-                return self.mylist
-           
         return self.mylist
 
     def hintCounter(self, value):
@@ -164,6 +163,4 @@ class Mylist:
             return self.mylist == other.mylist
         return NotImplemented
 
-list1 = Mylist()
-print(list1.sort(-1))
 

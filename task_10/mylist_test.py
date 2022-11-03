@@ -107,21 +107,22 @@ class TestMylist(unittest.TestCase):
         append_value = 1
         sort_direction = 1
         expected_result_append = [1]
-        expected_result_for_min_max_avg_remove_sortdirection_sort__issorted = None
+        expected_result_for_min_max_avg_remove_sortdirection = None
         expected_result_for_find_replace = -1
-        expected_result_for_includes = False
+        expected_result_for_includes_issorted = False
         expected_result_for_count = 0
-        self.assertEqual(empty_mylist.min(), expected_result_for_min_max_avg_remove_sortdirection_sort__issorted)
-        self.assertEqual(empty_mylist.max(), expected_result_for_min_max_avg_remove_sortdirection_sort__issorted)
-        self.assertEqual(empty_mylist.avg(), expected_result_for_min_max_avg_remove_sortdirection_sort__issorted)
+        expected_result_sort =[]
+        self.assertEqual(empty_mylist.min(), expected_result_for_min_max_avg_remove_sortdirection)
+        self.assertEqual(empty_mylist.max(), expected_result_for_min_max_avg_remove_sortdirection)
+        self.assertEqual(empty_mylist.avg(), expected_result_for_min_max_avg_remove_sortdirection)
         self.assertEqual(empty_mylist.find(self.test_dict), expected_result_for_find_replace)
-        self.assertEqual(empty_mylist.remove(self.remove_test_data), expected_result_for_min_max_avg_remove_sortdirection_sort__issorted)
-        self.assertEqual(empty_mylist.includes(self.test_includes_value), expected_result_for_includes)
+        self.assertEqual(empty_mylist.remove(self.remove_test_data), expected_result_for_min_max_avg_remove_sortdirection)
+        self.assertEqual(empty_mylist.includes(self.test_includes_value), expected_result_for_includes_issorted)
         self.assertEqual(empty_mylist.replace(self.test_old_value, self.test_new_value), expected_result_for_find_replace)
-        self.assertEqual(empty_mylist.sortDirection(), expected_result_for_min_max_avg_remove_sortdirection_sort__issorted)
-        self.assertEqual(empty_mylist.isSorted(), expected_result_for_min_max_avg_remove_sortdirection_sort__issorted)
+        self.assertEqual(empty_mylist.sortDirection(), expected_result_for_min_max_avg_remove_sortdirection)
+        self.assertEqual(empty_mylist.isSorted(), expected_result_for_includes_issorted)
         self.assertEqual(empty_mylist.count(), expected_result_for_count)
-        self.assertEqual(empty_mylist.sort(sort_direction), expected_result_for_min_max_avg_remove_sortdirection_sort__issorted)
+        self.assertEqual(empty_mylist.sort(sort_direction), expected_result_sort)
         self.assertEqual(empty_mylist.append(append_value), expected_result_append)
 
 
