@@ -92,9 +92,9 @@ class Mylist:
         return self.hintCounter(value)
 
     def append(self, value):
-        if isinstance(value, list):
-            if not value:
+        if not value:
                 return self.mylist
+        if isinstance(value, list):
             self.mylist = self.mylist + value
             return self.mylist
         self.mylist = self.mylist + [value]
