@@ -30,14 +30,11 @@ class Mylist:
         return avg
     
     def find(self, value):
-        # TODO: may we initiate `index` with -1 and then return after for loop nothing found/
-        # TODO: what if list is empty?
         if self.lenList() == 0:
             return -1
         for i in range(self.lenList()):
             if self.mylist[i] == value:
                 return i
-            # TODO: may we use another for loop with I-index instead?
         return -1
     
     def remove(self, index):
@@ -59,7 +56,6 @@ class Mylist:
         return hint_counter
     
     def includes(self, value):
-        # TODO: just 1 return instead of all lines?
         return self.hintCounter(value) > 0
 
     def sortDirection(self):
@@ -99,16 +95,16 @@ class Mylist:
 
     def append(self, value):
         if isinstance(value, list):
-            # TODO: what if that list is empty?
+            # TODO: what if passed list is empty?
             self.mylist = self.mylist + value
             return self.mylist
         self.mylist = self.mylist + [value]
         return self.mylist
     
-    # TODO: insert?
     def insert(self, index, value):
         if index < 0:
-            return None # TODO: None?
+            return None
+        # TODO: just `if`
         elif index >= self.lenList():
             return self.append(value)
         right_side_list = self.mylist[index:self.lenList()]
@@ -127,10 +123,10 @@ class Mylist:
         return self.mylist
     
     def sort(self, direction):
+        # TODO: can we cache the self.sortDirection()?
         if self.sortDirection() == None:
-            # TODO: return... what?
+            # TODO: return... what, origianl list?
             return None
-        # TODO: check for direction == 0 1st?
         # TODO: then check for isSorted and possible revert
         # TODO: do sorting
         if self.sortDirection() == 0:
