@@ -129,14 +129,13 @@ class Mylist:
                 self.mylist = self.mylist[::-1]
                 return self.mylist
         # TODO: that's only one possible option - we don't need an IF here.
-        if sort_direction == 0:
-            swapped = True
-            while swapped:
-                swapped = False
-                for i in range(self.lenList() - 1):
-                    if self.mylist[i] > self.mylist[i + 1]:
-                        self.mylist[i], self.mylist[i + 1] = self.mylist[i + 1], self.mylist[i]
-                        swapped = True
+        swapped = True
+        while swapped:
+            swapped = False
+            for i in range(self.lenList() - 1):
+                if self.mylist[i] > self.mylist[i + 1]:
+                    self.mylist[i], self.mylist[i + 1] = self.mylist[i + 1], self.mylist[i]
+                    swapped = True
             return self.sort(direction)
         return self.mylist
 
