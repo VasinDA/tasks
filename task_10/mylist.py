@@ -83,7 +83,6 @@ class Mylist:
         return 0
 
     def isSorted(self):
-       # TODO: may we have just 1 check instead?
         return self.sortDirection() == abs(1)
     
     def count(self, value=None):
@@ -103,7 +102,6 @@ class Mylist:
     def insert(self, index, value):
         if index < 0:
             return None
-        # TODO: just `if`
         if index >= self.lenList():
             return self.append(value)
         right_side_list = self.mylist[index:self.lenList()]
@@ -122,18 +120,15 @@ class Mylist:
         return self.mylist
     
     def sort(self, direction):
-        # TODO: can we cache the self.sortDirection()?
         sort_direction = self.sortDirection()
         if sort_direction == None or direction == 0:
-            # TODO: return... what, origianl list?
             return self.mylist
-        # TODO: then check for isSorted and possible revert
-        # TODO: do sorting
         if direction == sort_direction:
                 return self.mylist
         if self.isSorted() == True and direction != sort_direction:
                 self.mylist = self.mylist[::-1]
                 return self.mylist
+        # TODO: that's only one possible option - we don't need an IF here.
         if sort_direction == 0:
             swapped = True
             while swapped:
@@ -162,5 +157,3 @@ class Mylist:
         if isinstance(other, Mylist):
             return self.mylist == other.mylist
         return NotImplemented
-
-

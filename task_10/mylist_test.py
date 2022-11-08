@@ -27,10 +27,12 @@ class TestMylist(unittest.TestCase):
         self.assertEqual(self.mylist.avg(), expected_result)
     
     def test_find(self):
+        # TODO: we also nee a test for non-exiting value.
         for data in self.test_dict:
             self.assertEqual(self.mylist.find(data), self.test_dict[data])
 
     def test_remove(self):
+        # TODO: we also nee a test for non-exiting value.
         expected_result = True
         test_mylist = Mylist(1,2,4)
         self.mylist = self.mylist.remove(self.remove_test_data)
@@ -41,6 +43,7 @@ class TestMylist(unittest.TestCase):
         test_includes_value_wrong = 10
         expected_result_includes = True
         expected_result_includes_wrong = False
+        # TODO: we also nee a test for non-exiting value.
         self.assertEqual(self.mylist.replace(self.test_old_value, self.test_new_value), test_hint_counter)
         self.assertEqual(self.mylist.includes(self.test_includes_value), expected_result_includes)
         self.assertEqual(self.mylist.includes(test_includes_value_wrong), expected_result_includes_wrong)
@@ -60,6 +63,7 @@ class TestMylist(unittest.TestCase):
         self.assertEqual(self.unsorted_mylist.sortDirection(), expected_result_for_unsorted_mylist)
     
     def test_count(self):
+        # TODO: we also nee a test for non-exiting value.
         test_value = 2
         expected_result_with_value = 1
         expected_result_without_value = 4
@@ -83,6 +87,7 @@ class TestMylist(unittest.TestCase):
         self.assertEqual(self.mylist.insert(wrong_index, new_value), expected_result)
     
     def test_concat(self):
+        # TODO: we also nee a test for the empty value.
         test_mylist = Mylist(1,2,3)
         concat_list = Mylist(3,2,1)
         expected_result = [1,2,3,3,2,1]
@@ -95,6 +100,7 @@ class TestMylist(unittest.TestCase):
         self.assertEqual(self.mylist.clear(), expected_result)
     
     def test_sort(self):
+        # TODO: we also nee a test for already sorted array.
         direction_up = 1
         direction_down = -1
         expected_result_up = [1,2,4]
