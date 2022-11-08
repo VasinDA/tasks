@@ -6,7 +6,7 @@ def numQuest():
     low = 0
     high = upper_limit - 1
     # TODO: please check for upper boundry = 10, and number = 7
-    try_count = ceil(log(upper_limit))
+    try_count = ceil(log(upper_limit, 2))
     counter = 0
     print(f'I will guess in {try_count} attempts')
     return searchForSolutionTheQuest(list_for_quest, low, high, counter)
