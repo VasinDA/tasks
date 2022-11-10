@@ -7,16 +7,24 @@ def couldBeSorted(mylist):
 
 def beSortedUp(mylist, counter, len_list):
     for i in range(len_list):
-        smallest_index = i
+        lowest_index = i
+        if counter > 1:
+                return False
         for j in range(i + 1, len_list):
-            if mylist[j] < mylist[smallest_index]:
-                smallest_index = j
-        mylist[i], mylist[smallest_index] = mylist[smallest_index], mylist[i]
-        counter += 1 
-    return counter
+           if mylist[j] < mylist[lowest_index]:
+                lowest_index = j
+                counter += 1
+        mylist[i], mylist[lowest_index] = mylist[lowest_index], mylist[i]
+    return True
 
-
-
-
-mylist = [4,2,3,1]
-print(couldBeSorted(mylist))
+def beSortedDown(mylist, counter, len_list):
+    for i in range(len_list):
+        biggest_index = i
+        if counter > 1:
+                return False
+        for j in range(i + 1, len_list):
+           if mylist[j] > mylist[biggest_index]:
+                biggest_index = j
+                counter += 1
+        mylist[i], mylist[biggest_index] = mylist[biggest_index], mylist[i]
+    return True
