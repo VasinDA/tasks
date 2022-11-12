@@ -5,6 +5,7 @@ def nSmallest(list_of_chmob, n):
             if list_of_chmob[j]['price'] < list_of_chmob[smallest_index]['price']:
                 smallest_index = j
         list_of_chmob[i], list_of_chmob[smallest_index] = list_of_chmob[smallest_index], list_of_chmob[i]
+    # TODO: we have to return the list when we have enough elements, not at the end.
     return list_of_chmob[:n]
 
 list_of_chmob =  [{'name': 'Ivan', 'price': 2000}, {'name': 'Peter', 'price': 1200}, {'name': 'Ihor', 'price': 2700}, {'name': 'Gregory', 'price': 2500}]
