@@ -1,4 +1,5 @@
 # TODO: Coulde we resolve it for O(n)?
+# TODO: pelase test with [1,2,31,2]
 def couldBeSorted(mylist):
     counter = 0
     len_list = len(mylist)
