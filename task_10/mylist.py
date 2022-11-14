@@ -128,7 +128,6 @@ class Mylist:
         if self.isSorted() == True and direction != sort_direction:
                 self.mylist = self.mylist[::-1]
                 return self.mylist
-        # TODO: that's only one possible option - we don't need an IF here.
         swapped = True
         while swapped:
             swapped = False

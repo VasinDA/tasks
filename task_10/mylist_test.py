@@ -28,12 +28,10 @@ class TestMylist(unittest.TestCase):
         self.assertEqual(self.mylist.avg(), expected_result)
     
     def test_find(self):
-        # TODO: we also nee a test for non-exiting value.
         for data in self.test_dict:
             self.assertEqual(self.mylist.find(data), self.test_dict[data])
 
     def test_remove(self):
-        # TODO: we also nee a test for non-exiting value.
         expected_result = True
         expected_result_wrong_index = True
         wrong_index_remove = 4
@@ -46,7 +44,6 @@ class TestMylist(unittest.TestCase):
     def test_replace_includes(self):
         test_hint_counter = 1
         test_wrong_replace_value_counter = 0
-        # TODO: we also nee a test for non-exiting value.
         self.assertEqual(self.mylist.replace(self.test_old_value, self.test_new_value), test_hint_counter)
         self.assertEqual(self.mylist.replace(self.test_wrong_value, self.test_new_value), test_wrong_replace_value_counter)
         
@@ -71,7 +68,6 @@ class TestMylist(unittest.TestCase):
         self.assertEqual(self.unsorted_mylist.sortDirection(), expected_result_for_unsorted_mylist)
     
     def test_count(self):
-        # TODO: we also nee a test for non-exiting value.
         expected_result_with_value = 1
         expected_result_without_value = 4
         expected_result_wrong_value = 0
@@ -96,7 +92,6 @@ class TestMylist(unittest.TestCase):
         self.assertEqual(self.mylist.insert(wrong_index, new_value), expected_result)
     
     def test_concat(self):
-        # TODO: we also nee a test for the empty value.
         test_mylist = Mylist(1,2,3)
         concat_list = Mylist(3,2,1)
         empty_concat_list = Mylist()
@@ -112,7 +107,6 @@ class TestMylist(unittest.TestCase):
         self.assertEqual(self.mylist.clear(), expected_result)
     
     def test_sort(self):
-        # TODO: we also nee a test for already sorted array.
         direction_up = 1
         direction_down = -1
         direction_zero = 0
