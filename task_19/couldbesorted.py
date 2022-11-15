@@ -1,5 +1,6 @@
 def couldBeSorted(mylist):
-    if len(mylist) <= 2:
+    len_list = len(mylist)
+    if len_list <= 2:
         return False
     mydict = swapToSorted(mylist)
     
@@ -22,5 +23,5 @@ def swapToSorted(mylist):
     
     return swap_dict
 
-mylist = [1,4,2,3] 
+mylist = [4,2,3,1]
 print(swapToSorted(mylist))

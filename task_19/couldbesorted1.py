@@ -28,3 +28,6 @@ def beSortedDown(mylist, counter, len_list):
                 counter += 1
         mylist[i], mylist[biggest_index] = mylist[biggest_index], mylist[i]
     return True
+
+mylist = [6,2,3,4,5,1]
+print(couldBeSorted(mylist))
