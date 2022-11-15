@@ -2,26 +2,41 @@ def couldBeSorted(mylist):
     len_list = len(mylist)
     if len_list <= 2:
         return False
-    mydict = swapToSorted(mylist)
-    
-    if mydict['<'] == 0 or mydict['>'] == 0:
-        return False
-    if mydict['<'] == 1 or mydict['>'] == 1:
+    if len_list == 3:
         return True
-    return False
-
-
-def swapToSorted(mylist):
     swap_dict = {'>':0, '<':0}
-    for index in range(len(mylist)-1):
-        value = mylist[index]
-        next_value = mylist[index + 1]
+    for index in range(1, len_list):
+        value = mylist[index - 1]
+        next_value = mylist[index]
         if next_value > value:
             swap_dict['>'] += 1
         if next_value < value:
             swap_dict['<'] += 1
-    
-    return swap_dict
+    if swap_dict['>'] == 0 or swap_dict['<'] == 0:
+        return False
+    if swap_dict['>'] >= swap_dict['<']:
+        return beSortOneSwap(mylist)
+    mylist = mylist[::-1]
+    return beSortOneSwap(mylist)
 
-mylist = [4,2,3,1]
-print(swapToSorted(mylist))
+def beSortOneSwap(mylist):
+    len_list = len(mylist)
+    first_value, second_value = 0, 0
+    counter = 0
+    for index in range(len_list):
+        if mylist[index] < mylist[index - 1]:
+            counter += 1
+            if first_value == 0:
+                first_value = index
+            else:
+                second_value = index
+    if counter > 2:
+        return False
+    if counter == 2 and len_list > 4:
+        mylist[first_value - 1], mylist[second_value] = mylist[second_value], mylist[first_value - 1]
+    else:    
+        mylist[first_value - 1], mylist[first_value] =  mylist[first_value], mylist[first_value - 1]
+    for index in range(1, len_list):
+        if mylist[index] < mylist[index -1]:
+            return False
+    return True
