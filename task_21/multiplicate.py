@@ -5,6 +5,8 @@ def multiplicationSol1(a,b):
     multi = c
     for _ in range(d-1):
         multi += c
+    if a < 0 and b < 0:
+        return multi
     if a < 0 or b < 0:
         return -multi
     return multi
@@ -14,6 +16,8 @@ def multiplicationSol2(a, b):
     c = abs(a)
     d = abs(b)
     mylist = [c for _ in range(d)]
+    if a < 0 and b < 0:
+        return sum(mylist)
     if a< 0 or b < 0:
         return -sum(mylist)
     return sum(mylist)   
