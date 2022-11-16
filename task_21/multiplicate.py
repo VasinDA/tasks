@@ -34,7 +34,3 @@ def recorsion(c, d, mylist):
         return mylist
     mylist.append(c)
     return recorsion(c, d-1, mylist)
-
-
-a, b = -2,-3
-print(multiplicationSol3(a,b))
