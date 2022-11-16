@@ -24,13 +24,13 @@ def multiplicationSol3(a, b):
     d = abs(b)
     mylist = []
     if a < 0 and b < 0:
-         return sum(recorsion(c, d, mylist))
+         return sum(recursion(c, d, mylist))
     if a < 0 or b < 0:
-        return -sum(recorsion(c, d, mylist))
-    return sum(recorsion(c, d, mylist))
+        return -sum(recursion(c, d, mylist))
+    return sum(recursion(c, d, mylist))
 
-def recorsion(c, d, mylist):
+def recursion(c, d, mylist):
     if d == 0:
         return mylist
     mylist.append(c)
-    return recorsion(c, d-1, mylist)
+    return recursion(c, d-1, mylist)
