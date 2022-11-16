@@ -2,8 +2,6 @@ def couldBeSorted(mylist):
     len_list = len(mylist)
     if len_list <= 2:
         return False
-    if len_list == 3:
-        return True
     swap_dict = {'>':0, '<':0}
     for index in range(1, len_list):
         value = mylist[index - 1]
