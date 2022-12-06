@@ -19,6 +19,5 @@ def palinDrome(str):
             counter -= 1
     return counter == 0
 
-str = 'a127a'
-print(palinDrome(str))
+
 
