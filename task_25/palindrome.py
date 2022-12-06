@@ -10,6 +10,7 @@ def palinDrome(str):
     counter =  len_str_list_half
     for idx in range(len_str_list_half):
         if str_list[idx].isdigit():
+            # TODO: may we eleminate the `del` amd ise L- and R- pointers?
             del str_list[idx]
             palinDrome(''.join(str_list))
         if str_list[-idx - 1].isdigit():
