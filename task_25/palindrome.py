@@ -8,6 +8,7 @@ def palinDrome(str):
         return True
     start = 0 
     end = len_str - 1
+    # That works, but I'd like to see solution just with one `for`.
     while start < end:
         while str[start].isdigit():
             start += 1
