@@ -9,12 +9,15 @@ def zipSort(arr1, arr2):
     while index_arr1 < arr1_len and index_arr2 < arr2_len:
         # TODO: both `while` llops look similar, can we make that code common?
         while arr1[index_arr1] < arr2[index_arr2]:
-            new_arr.append[arr1[index_arr1]]
-            index_arr1 += 1
+            appendNewArrValue(arr1, new_arr, index_arr1)
         while arr2[index_arr2] < arr1[index_arr1]:
-            new_arr.append[arr2[index_arr2]]
-            index_arr2 += 1
+            appendNewArrValue(arr2, new_arr, index_arr2)
     if index_arr1 < arr1_len:
         new_arr = new_arr + arr1[index_arr1:]
     new_arr = new_arr + arr2[index_arr2:]
     return new_arr
+
+def appendNewArrValue(arr, new_arr, index):
+    new_arr.append[arr[index]]
+    index += 1 
+    return index

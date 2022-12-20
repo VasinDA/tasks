@@ -9,11 +9,13 @@ def palinDrome(str):
     start = 0 
     end = len_str - 1
     # That works, but I'd like to see solution just with one `for`.
-    while start < end:
-        while str[start].isdigit():
+    for _ in range(len_str):
+        if str[start].isdigit():
             start += 1
-        while str[end].isdigit():
+            continue
+        if str[end].isdigit():
             end -= 1
+            continue
         if str[start].lower() != str[end].lower():
             return False
         start += 1
