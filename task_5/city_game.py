@@ -33,6 +33,3 @@ class CityGame:
         del new_cities_list[answer_dict[min(answer_dict)]]
         self.cities_dict[letter] = new_cities_list
         return answer
-
-                    
-
