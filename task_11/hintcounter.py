@@ -12,5 +12,3 @@ def hintCounter(list):
                 pair_list = [key for _ in range(2)]
                 list.append(pair_list)
     return list
-         
-    
