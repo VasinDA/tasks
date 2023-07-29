@@ -1,5 +1,6 @@
-def anyMatches(*tuple_list):
+def anyMatches(tuple_list):
     mydict = {}
+    print(tuple_list)
     for list_values in tuple_list:
         for i in list_values:
             if i not in mydict:
